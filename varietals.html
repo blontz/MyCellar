@@ -3,34 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="mycellarStyle.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
     <title>MyCellar</title>
 </head>
 
 <body>
 
 <?php include 'menu.php';?>
-<h1> Maintain Cellar</h1>
-<p>Update the wines in your cellar below by changing the quantities or adding and deleting wines
-	altogether.</p>
+<h1> Maintain Varietals</h1>
+<p>Update the types of wines available such as Merlot, Chardonnay and so on.</p>
 
 <?php
 
 include('class/mysql_crud.php');
 $db = new Database();
 $db->connect();
-$db->select('varietals','id,name',NULL,NULL,NULL); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
+$db->select('varietals','id,name',NULL,NULL,'name'); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
 $res = $db->getResult();
 //print_r($res);
 
+echo "<div data-ng-app=\"\" data-ng-init=\"results=".$res."\">";
 echo "<table>";
 echo "<tr><th>Id</th><th>Name</th></tr>";
 foreach($res as $cur_row) {
 	echo "<tr>";
     echo "<td>" . $cur_row[id] . "</td>";
-    echo "<td>" . $cur_row[name] . "</td>";
+    echo "<td> <input type=\"text\" value=\"" . $cur_row[name] . "\"></td>";
 	echo "</tr>";
 }
 echo "</table>";
+echo "</div>";
 
 ?>
 

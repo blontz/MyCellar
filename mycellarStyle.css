@@ -5,3 +5,15 @@ h1 {
     color: navy;
     margin-left: 20px;
 }
+table {
+	table-layout: auto;
+	border: solid 1px black;
+}
+th {
+	text-align: center;
+}
+td {
+	width: 150px; 
+	border: 1px solid black;
+	text-align: left;
+}
