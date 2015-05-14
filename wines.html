@@ -3,17 +3,20 @@
 <head>
     <title>My Cellar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js"></script>
 </head>
+
 <body>
-    <script type="text/javascript" src="js/vendors/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="js/vendors/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/vendors/knockout-3.2.0.js"></script>
-    <script type="text/javascript" src="js/models/wines.js"></script>
-    <script type="text/javascript" src="js/wines_vm.js"></script>
     <h1>Maintain Cellar</h1>
     <p>Update the wines in your cellar below by changing the quantities or by adding and deleting wines altogether.</p>
-    <h3>Your wines (<span data-bind="text: wines().length"></span>) - <span data-bind="text: firstName"></span></h3>
+    <h3>Your wines (<span data-bind="text: wines().length"></span>)</h3>
     <table>
         <thead><tr>
             <th>Name</th><th>Varietal</th><th></th>
@@ -29,5 +32,8 @@
 
     <button data-bind="click: addWine">Add Wine
     </button>
+
+    <script type="text/javascript" src="js/models/wines.js"></script>
+    <script type="text/javascript" src="js/wines_vm.js"></script>
 </body>
 </html>
