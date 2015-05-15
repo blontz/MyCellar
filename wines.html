@@ -1,8 +1,14 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Cellar</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="This page is part of the My Cellar application and allows the user to manage the wines">
+    <meta name="author" content="Bradley Lontz">
+
+    <title>My Cellar</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <!-- Optional theme -->
@@ -13,25 +19,40 @@
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js"></script>
 </head>
 
-<body>
-    <h1>Maintain Cellar</h1>
-    <p>Update the wines in your cellar below by changing the quantities or by adding and deleting wines altogether.</p>
-    <h3>Your wines (<span data-bind="text: wines().length"></span>)</h3>
-    <table>
-        <thead><tr>
-            <th>Name</th><th>Varietal</th><th></th>
-        </tr></thead>
-        <tbody data-bind="foreach: wines">
-            <tr>
-                <td><input data-bind="value: name" /></td>
-                <td><input data-bind="value: varietal" /></td>
-                <td><a href="#" data-bind="click: $parent.removeWine">Delete</a></td>
-            </tr>
-        </tbody>
-    </table>
+<body role="document">
+    <div class="row">
+        <div class="col-md-10 col-sm-offset-1">
+            <div class="jumbotron">
+                <h1 class="text-center">Maintain Cellar</h1>
+                <p class="text-center">Update the wines in your cellar below by changing the quantities or by adding and deleting wines altogether.</p>
+            </div>
 
-    <button data-bind="click: addWine">Add Wine
-    </button>
+            <div class="row">
+                <div class="col-md-10 col-sm-offset-1">
+                    <h3>Your wines <small>(<span data-bind="text: wines().length"></span>)</small></h3>
+                    <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Varietal</th>
+                                <th>&nbsp</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: wines">
+                            <tr>
+                                <td><input data-bind="value: name" /></td>
+                                <td><input data-bind="value: varietal" /></td>
+                                <td><button data-bind="click: $parent.removeWine" type="button" class="btn btn-danger">Delete</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                    <button data-bind="click: addWine" type="button" class="btn btn-primary">Add Wine</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script type="text/javascript" src="js/models/wines.js"></script>
     <script type="text/javascript" src="js/wines_vm.js"></script>
