@@ -1,19 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="mycellarStyle.css">
-    <title>MyCellar</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="This page is part of the My Cellar application and allows the user to manage the wines">
+    <meta name="author" content="Bradley Lontz">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js"></script>
+    
+    <!-- Provide meta data that identifies the page -->
+    <meta name="description" content="This page is part of the My Cellar application and simply gives some background on the application.">
+    <meta name="author" content="Bradley Lontz">
+
+    <title>My Cellar - About</title>
 </head>
 
-<body>
-<?php include 'menu.php';?>
+<body role="document">
 
-<h1>Welcome to <b>MyCellar</b></h1><br>
-<p>This site let's you maintain your wines.  What you like and what you have
-on-hand in your cellar.  Use the menu at the top to display your cellar and
-maintain the wines in your cellar.</p>
+	<!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">My Cellar</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="cellar.html">Display Cellar</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Maintain <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="wines.html">Maintain Cellar</a></li>
+                    <li><a href="varietals.html">Maintain Varietals</a></li>
+                </ul>
+            </li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
 
-<?php include 'footer.php';?>
+    <div class="row">
+        <div class="col-md-10 col-sm-offset-1">
+            <div class="jumbotron">
+                <h1 class="text-center">Welcome to MyCellar</h1>
+                <p class="text-center">This site let's you maintain your wines.  What you like and what you have on-hand in your cellar.  Use the menu at the top to display your cellar and maintain the wines in your cellar.</p>
+            </div>
+         </div>
+    </div>
+
+<br><br>
+
+<script type="text/javascript" src="js/footer.js"></script>
+
 </body>
 </html>
