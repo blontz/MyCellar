@@ -1,6 +1,9 @@
 ﻿function WineOld(name, varietal) {
-    var self = this;
-    self.name = name;
-    self.varietal = varietal;
+    this.name = name;
+    this.varietal = varietal;
 }
 
+function Varietals(id, name) {
+    this.id = id;
+    this.name = name;
+}
