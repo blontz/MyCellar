@@ -16,6 +16,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.min.js"></script>
     
     <!-- Provide meta data that identifies the page -->
     <meta name="description" content="This page is part of the My Cellar application and simply gives some background on the application.">
@@ -64,32 +65,44 @@
          </div>
     </div>
 
-<?php
+    <?php
+    include('class/mysql_crud.php');
+    $db = new Database();
+    $db->connect();
+    $db->select('varietals','id,name',NULL,NULL,'name'); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
+    $res = $db->getResult();
 
-include('class/mysql_crud.php');
-$db = new Database();
-$db->connect();
-$db->select('varietals','id,name',NULL,NULL,'name'); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
-$res = $db->getResult();
-//print_r($res);
+    echo "<div data-ng-app=\"\" data-ng-init=\"results=".$res."\">";
+    echo "<table>";
+    echo "<tr><th>Id</th><th>Name</th></tr>";
+    foreach($res as $cur_row) {
+	   echo "<tr>";
+        echo "<td>" . $cur_row[id] . "</td>";
+        echo "<td> <input type=\"text\" value=\"" . $cur_row[name] . "\"></td>";
+	   echo "</tr>";
+    }
+    echo "</table>";
+    echo "</div>";
+    ?>
 
-echo "<div data-ng-app=\"\" data-ng-init=\"results=".$res."\">";
-echo "<table>";
-echo "<tr><th>Id</th><th>Name</th></tr>";
-foreach($res as $cur_row) {
-	echo "<tr>";
-    echo "<td>" . $cur_row[id] . "</td>";
-    echo "<td> <input type=\"text\" value=\"" . $cur_row[name] . "\"></td>";
-	echo "</tr>";
-}
-echo "</table>";
-echo "</div>";
+    <p>ID: <strong data-bind="text: id"></strong></p>
+    <p>Name: <strong data-bind="text: name"></strong></p>
+        
+    <!-- store the data in a JavaScript variable via JSon -->    
+    <script type="text/javascript"> 
+        var data = <?php echo json_encode($res); ?> ;
+ 
+        function VarietalListViewModel(parms) {
+            var self = this;
+    
+            self.name = ko.observable('Merlot');
+            self.id = ko.observable(parms.id);
+        }
 
-?>
+        ko.applyBindings(new VarietalListViewModel(data));
+    </script>
 
-<br><br>
 
     <script type="text/javascript" src="js/footer.js"></script>
-    <script type="text/javascript" src="js/varietals_vm.js"></script>
 </body>
 </html>

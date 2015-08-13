@@ -3,11 +3,12 @@
     self.name = name;
 }
 
-function VarietalListViewModel(res) {
+function VarietalListViewModel(parms) {
     var self = this;
     
-    self.varietals = ko.mapping.fromJS(res);
-
+    self.name = ko.observable('Merlot');
+    self.id = ko.observable(parms.id);
+    
     //Operations
     self.addVarietal = function () {
         self.varietals.push(new Varietal("New"));
@@ -18,4 +19,4 @@ function VarietalListViewModel(res) {
     }
 }
 
-ko.applyBindings(new VarietalListViewModel());
+ko.applyBindings(new VarietalListViewModel(data));

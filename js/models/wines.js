@@ -1,4 +1,4 @@
-﻿function WineOld(name, varietal) {
+﻿function Wine(name, varietal) {
     this.name = name;
     this.varietal = varietal;
 }
