@@ -64,30 +64,6 @@
          </div>
     </div>
 
-<?php
-
-include('class/mysql_crud.php');
-$db = new Database();
-$db->connect();
-$db->select('wines','wines.name, varietals.name as type, wines.price, wines.on_hand, wines.year, wines.region','varietals ON wines.type_id = varietals.id',NULL, NULL); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
-$res = $db->getResult();
-//print_r($res);
-
-echo "<table>";
-echo "<tr><th>Name</th><th>Varietal</th><th>Price</th><th>Quantity</th><th>Year</th><th>Region</th></tr>";
-foreach($res as $cur_row) {
-	echo "<tr>";
-    echo "<td>" . $cur_row[name] . "</td>";
-    echo "<td>" . $cur_row[type] . "</td>";
-    echo "<td>" . $cur_row[price] . "</td>";
-    echo "<td>" . $cur_row[on_hand] . "</td>";
-    echo "<td>" . $cur_row[year] . "</td>";
-    echo "<td>" . $cur_row[region] . "</td>";
-	echo "</tr>";
-}
-echo "</table>";
-
-?>
 
 <br><br>
 
