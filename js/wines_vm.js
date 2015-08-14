@@ -2,7 +2,6 @@
 
     // Non-editable properties - will come from database
     var self = this;
-    self.availableVarieties = ["Unknown", "Merlot", "Cab", "Pinot Nior", "Savanoc Blanc"];
  
     // Editable properties
     self.wines = ko.observableArray();
@@ -10,12 +9,6 @@
     // Methods
     // Create a method to add a wine to the list
     self.addWine = function (name, varietal) {
-        var name = name || "New";
-
-        if (varietal === undefined || this.availableVarieties.indexOf(varietal) === -1) {
-            varietal = self.availableVarieties[0];
-        }
-                        
         self.wines.push(new Wine(name, varietal));
     }
 
