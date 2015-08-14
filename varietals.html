@@ -65,43 +65,30 @@
          </div>
     </div>
 
-    <?php
-    include('class/mysql_crud.php');
-    $db = new Database();
-    $db->connect();
-    $db->select('varietals','id,name',NULL,NULL,'name'); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
-    $res = $db->getResult();
-
-    echo "<div data-ng-app=\"\" data-ng-init=\"results=".$res."\">";
-    echo "<table>";
-    echo "<tr><th>Id</th><th>Name</th></tr>";
-    foreach($res as $cur_row) {
-	   echo "<tr>";
-        echo "<td>" . $cur_row[id] . "</td>";
-        echo "<td> <input type=\"text\" value=\"" . $cur_row[name] . "\"></td>";
-	   echo "</tr>";
-    }
-    echo "</table>";
-    echo "</div>";
-    ?>
-
-    <p>ID: <strong data-bind="text: id"></strong></p>
-    <p>Name: <strong data-bind="text: name"></strong></p>
+            <div class="row">
+                <div class="col-md-10 col-sm-offset-1">
+                    <h3>Your Wine Varieties <small>(<span data-bind="text: varietes().length"></span>)</small></h3>
+                    <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>&nbsp</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: varietes">
+                            <tr>
+                                <td><input data-bind="value: varietes" /></td>
+                                <td><button data-bind="click: $parent.removeVariety" type="button" class="btn btn-danger">Delete</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                    <button data-bind="click: addWine" type="button" class="btn btn-primary">Add Wine</button>
+                    <button data-bind="click: saveWine" type="button" class="btn btn-primary">Save Wine</button>
+                </div>
+            </div>
         
-    <!-- store the data in a JavaScript variable via JSon -->    
-    <script type="text/javascript"> 
-        var data = <?php echo json_encode($res); ?> ;
- 
-        function VarietalListViewModel(parms) {
-            var self = this;
-    
-            self.name = ko.observable('Merlot');
-            self.id = ko.observable(parms.id);
-        }
-
-        ko.applyBindings(new VarietalListViewModel(data));
-    </script>
-
 
     <script type="text/javascript" src="js/footer.js"></script>
 </body>
