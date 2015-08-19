@@ -5,6 +5,7 @@
  
     // Editable properties
     self.wines = ko.observableArray();
+    self.availableVarietals = ko.observableArray(["Unknown", "Merlot", "Cab", "Pinot Nior", "Savanoc Blanc"]);
 
     // Methods
     // Create a method to add a wine to the list

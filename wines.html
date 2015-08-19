@@ -78,13 +78,13 @@
                         <tbody data-bind="foreach: wines">
                             <tr>
                                 <td><input data-bind="value: name" /></td>
-                                <td><input data-bind="value: varietal" /></td>
+                                <td><select data-bind="options: $parent.availableVarietals, value: varietal"></select></td>
                                 <td><button data-bind="click: $parent.removeWine" type="button" class="btn btn-danger">Delete</button></td>
                             </tr>
                         </tbody>
                     </table>
                     </div>
-                    <button data-bind="click: addWine" type="button" class="btn btn-primary">Add Wine</button>
+                    <button data-bind="click: addWine.bind($data,'New','Unknown')" type="button" class="btn btn-primary">Add Wine</button>
                     <button data-bind="click: saveWine" type="button" class="btn btn-primary">Save Wine</button>
                 </div>
             </div>
@@ -94,7 +94,8 @@
     <br><br>
 
     <script type="text/javascript" src="js/footer.js"></script>
-    <script type="text/javascript" src="js/models/wines.js"></script>
+    <script type="text/javascript" src="js/models/varietal.js"></script>
+    <script type="text/javascript" src="js/models/wine.js"></script>
     <script type="text/javascript" src="js/wines_vm.js"></script>
 </body>
 </html>
