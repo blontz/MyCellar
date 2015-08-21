@@ -40,7 +40,6 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index.html">Home</a></li>
             <li><a href="cellar.html">Display Cellar</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Maintain <span class="caret"></span></a>
@@ -61,12 +60,44 @@
                 <h1 class="text-center">What's In The Cellar</h1>
                 <p class="text-center">This is a list of all the wines in your cellar.</p>
             </div>
+            <div class="row">
+                <div class="col-md-10 col-sm-offset-1">
+                    <h3>Your wines <small>(<span data-bind="text: wines().length"></span>)</small></h3>
+                    <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Varietal</th>
+                                <th>Price</th>
+                                <th>On Hand</th>
+                                <th>Year</th>
+                                <th>&nbsp</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: wines">
+                            <tr>
+                                <td><span data-bind="text: name" /></td>
+                                <td><span data-bind="text: varietal" /></td>
+                                <td><span data-bind="text: price" /></td>
+                                <td><span data-bind="text: onHand" /></td>
+                                <td><span data-bind="text: year" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+            
          </div>
     </div>
 
 
-<br><br>
+    <br><br>
 
-<script type="text/javascript" src="js/footer.js"></script>
+    <script type="text/javascript" src="js/footer.js"></script>
+    <script type="text/javascript" src="js/models/varietal.js"></script>
+    <script type="text/javascript" src="js/models/wine.js"></script>
+    <script type="text/javascript" src="js/wines_vm.js"></script>
 </body>
 </html>

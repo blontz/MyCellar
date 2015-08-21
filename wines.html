@@ -40,7 +40,6 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index.html">Home</a></li>
             <li><a href="cellar.html">Display Cellar</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Maintain <span class="caret"></span></a>
@@ -72,6 +71,9 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Varietal</th>
+                                <th>Price</th>
+                                <th>On Hand</th>
+                                <th>Year</th>
                                 <th>&nbsp</th>
                             </tr>
                         </thead>
@@ -79,12 +81,15 @@
                             <tr>
                                 <td><input data-bind="value: name" /></td>
                                 <td><select data-bind="options: $parent.availableVarietals, value: varietal"></select></td>
+                                <td><input data-bind="value: price" /></td>
+                                <td><input data-bind="value: onHand" /></td>
+                                <td><input data-bind="value: year" /></td>
                                 <td><button data-bind="click: $parent.removeWine" type="button" class="btn btn-danger">Delete</button></td>
                             </tr>
                         </tbody>
                     </table>
                     </div>
-                    <button data-bind="click: addWine.bind($data,'New','Unknown')" type="button" class="btn btn-primary">Add Wine</button>
+                    <button data-bind="click: addWine.bind($data,'New','Unknown', 0, 0, 2015)" type="button" class="btn btn-primary">Add Wine</button>
                     <button data-bind="click: saveWine" type="button" class="btn btn-primary">Save Wine</button>
                 </div>
             </div>
