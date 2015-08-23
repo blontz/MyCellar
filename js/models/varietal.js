@@ -7,5 +7,9 @@ function Varietal (grape, color) {
     self.color = color || "Red";
 }
 
-// Temporary list of valid varietals until the save and load are complete
-var varietalList = ["Unknown", "Merlot", "Cab", "Pinot Nior", "Savanoc Blanc"];
+function VarietalList () {
+    // Temporary list of valid varietals until the save and load are complete
+    var listItems = ["Unknown", "Merlot", "Cab", "Pinot Nior", "Savanoc Blanc"];
+    
+    return listItems;
+}

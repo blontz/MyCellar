@@ -7,8 +7,10 @@
     // Load varietals into the array
     self.varietals = ko.observableArray();
     
-    for (i=0; i < varietalList.length; i++) {
-        self.varietals.push(new Varietal(varietalList[i], "Red"));
+    // Replace this with a service call to load Varietals via JSON from DB
+    var validVarietals = VarietalList();
+    for (i=0; i < validVarietals.length; i++) {
+        self.varietals.push(new Varietal(validVarietals[i], "Red"));
     }
 
     // Methods
