@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body role="document" class="hidden" data-bind="css: { hidden: false }">
+
+    <header>
+        <% include ../partials/header %>
+    </header>
+
+	<div class="row">
+        <div class="col-md-10 col-sm-offset-1">
+            <div class="jumbotron">
+                <h1 class="text-center">Maintain Cellar</h1>
+                <p class="text-center">Update the wines in your cellar below by changing the quantities or by adding and deleting wines altogether.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-10 col-sm-offset-1">
+                    <h3>Your wines <small>(<span data-bind="text: wines().length"></span>)</small></h3>
+                    <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Varietal</th>
+                                <th>Price</th>
+                                <th>On Hand</th>
+                                <th>Year</th>
+                                <th>&nbsp</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: wines">
+                            <tr>
+                                <td><input data-bind="value: name" /></td>
+                                <td><select data-bind="options: $parent.availableVarietals, value: $data.varietal"></select></td>
+                                <td><input data-bind="value: $data.price" /></td>
+                                <td><input data-bind="value: $data.onHand" /></td>
+                                <td><input data-bind="value: $data.year" /></td>
+                                <td><button data-bind="click: $parent.removeWine" type="button" class="btn btn-danger">Delete</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                    <button data-bind="click: addWine.bind($data,'New','Unknown', 0, 0, 2015)" type="button" class="btn btn-primary">Add Wine</button>
+                    <button data-bind="click: saveWine" type="button" class="btn btn-primary">Save Wine</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+    <script src="dataService.js"></script>
+    <script src="models/varietal.js"></script>
+    <script src="models/wine.js"></script>
+    <script src="wines_vm.js"></script>
+</body>
+</html>

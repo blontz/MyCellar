@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body role="document" class="hidden" data-bind="css: { hidden: false }">
+
+    <header>
+        <% include ../partials/header %>
+    </header>
+    <div class="row">
+        <div class="col-md-10 col-sm-offset-1">
+            <div class="jumbotron">
+                <h1 class="text-center">What's In The Cellar</h1>
+                <p class="text-center">This is a list of all the wines in your cellar.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-10 col-sm-offset-1">
+                    <h3>Your wines <small>(<span data-bind="text: wines().length"></span>)</small></h3>
+                    <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Varietal</th>
+                                <th>Price</th>
+                                <th>On Hand</th>
+                                <th>Year</th>
+                                <th>&nbsp</th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: wines">
+                            <tr>
+                                <td><span data-bind="text: name" /></td>
+                                <td><span data-bind="text: varietal" /></td>
+                                <td><span data-bind="text: price" /></td>
+                                <td><span data-bind="text: onHand" /></td>
+                                <td><span data-bind="text: year" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+            
+         </div>
+    </div>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+    <script src="dataService.js"></script>
+    <script src="models/varietal.js"></script>
+    <script src="models/wine.js"></script>
+    <script src="wines_vm.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+ 

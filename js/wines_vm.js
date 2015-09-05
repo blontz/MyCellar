@@ -1,35 +1,35 @@
 ﻿function WineListViewModel() {
 
     // Non-editable properties - will come from database
-    var self = this;
+    var vm = this;
  
     // Editable properties
-    this.wines = ko.observableArray();
-    this.availableVarietals = ko.observableArray(VarietalList());
+    vm.wines = ko.observableArray();
+    vm.availableVarietals = ko.observableArray(varietalModule.VarietalList());
 
     // Methods
     // Create a method to add a wine to the list
-    this.addWine = function (name, varietal, price, onHand, year) {
-        self.wines.push(new Wine(name, varietal, price, onHand, year));
+    vm.addWine = function (name, varietal, price, onHand, year) {
+        vm.wines.push(new wineModule.Wine(name, varietal, price, onHand, year));
     }
 
     // Create a method to remove a wine from the wine list
-    this.removeWine = function (wine) { 
-        self.wines.remove(wine); 
+    vm.removeWine = function (wine) { 
+        vm.wines.remove(wine); 
     }
     
     // Create a method to load the wine list with wines
-    this.retrieveWine = function () {
+    vm.retrieveWine = function () {
         var wineString = '{ "name": "First Taste", "varietal": "Merlot", "price": 24.99, "onHand": 0, "year": 2012}';
-        self.wines.push(JSON.parse(wineString));
-        self.addWine("Second Taste", "Cab", 19.99, 2, 2010);
+        vm.wines.push(JSON.parse(wineString));
+        vm.addWine("Second Taste", "Cab", 19.99, 2, 2010);
     }
     
     // Create a method to save the wines in the wine list
-    this.saveWine = function () {
-        console.log("Saving " + this.wines().length + " wines...");
-        for (i=0; i < this.wines().length; i++) {
-            console.log(this.wines()[i]);
+    vm.saveWine = function () {
+        console.log("Saving " + vm.wines().length + " wines...");
+        for (i=0; i < vm.wines().length; i++) {
+            console.log(vm.wines()[i]);
         }
     }
 }

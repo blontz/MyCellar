@@ -1,0 +1,13 @@
+{
+  "name": "MyCellar",
+  "main": "server.js",
+  "author": "Bradley Lontz",
+  "dependencies": {
+    "ejs": "^1.0.0",
+    "express": "^4.6.1"
+  },
+  "repository": {
+  	"type": "git",
+  	"url": "https://github.com/blontz/MyCellar"
+  }
+}

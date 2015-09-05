@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body role="document" class="hidden" data-bind="css: { hidden: false }">
+
+    <header>
+        <% include ../partials/header %>
+    </header>
+    <div class="row">
+        <div class="col-md-10 col-sm-offset-1">
+            <div class="jumbotron">
+                <h1 class="text-center">Maintain Varietals</h1>
+                <p class="text-center">Update the types of wines available such as Merlot, Chardonnay and so on.</p>
+            </div>
+         </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-sm-offset-1">
+            <h3>Your Wine Varieties <small>(<span data-bind="text: varietals().length"></span>)</small></h3>
+            <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>&nbsp</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: varietals">
+                    <tr>
+                        <td><input data-bind="value: grape" /></td>
+                        <td><select data-bind="options: $parent.availableColors, value: color"></select></td>
+                        <td><button data-bind="click: $parent.removeVarietal" type="button" class="btn btn-danger">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <button data-bind="click: addVarietal.bind($data, 'New')" type="button" class="btn btn-primary">Add Varietal</button>
+            <button data-bind="click: saveVarietals" type="button" class="btn btn-primary">Save Varietals</button> <br/><br/>
+        </div>
+    </div>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+    <script src="dataService.js"></script>
+    <script src="models/varietal.js"></script>
+    <script src="models/wine.js"></script>
+    <script src="varietals_vm.js"></script>
+</body>
+</html>
